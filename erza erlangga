@@ -1,0 +1,73 @@
+# ==================================================
+# ALGORITMA TOTAL PEMBAYARAN
+# Nama  : [Nama Kamu]
+# NPM   : [NPM Kamu]
+# ==================================================
+
+def total_pembayaran(harga_satuan, jumlah_barang, biaya_layanan):
+    # PROSES
+    subtotal = harga_satuan * jumlah_barang
+    total = subtotal + biaya_layanan
+
+    # OUTPUT
+    return subtotal, total
+
+
+def main():
+    print("=" * 40)
+    print("       PROGRAM TOTAL PEMBAYARAN")
+    print("=" * 40)
+
+    # INPUT
+    harga_satuan = float(input("Masukkan harga satuan (Rp): "))
+    jumlah_barang = int(input("Masukkan jumlah barang: "))
+    biaya_layanan = float(input("Masukkan biaya layanan (Rp): "))
+
+    # VALIDASI INPUT
+    if harga_satuan < 0 or jumlah_barang < 0 or biaya_layanan < 0:
+        print("Error: Data tidak boleh bernilai negatif.")
+        return
+
+    # PERHITUNGAN
+    subtotal, total = total_pembayaran(
+        harga_satuan,
+        jumlah_barang,
+        biaya_layanan
+    )
+
+    # MENAMPILKAN HASIL
+    print("\n" + "=" * 40)
+    print("          HASIL PEMBAYARAN")
+    print("=" * 40)
+    print(f"Harga satuan   : Rp{harga_satuan:,.0f}")
+    print(f"Jumlah barang  : {jumlah_barang}")
+    print(f"Biaya layanan  : Rp{biaya_layanan:,.0f}")
+    print("-" * 40)
+    print(f"Subtotal       : Rp{subtotal:,.0f}")
+    print(f"Total pembayaran: Rp{total:,.0f}")
+    print("=" * 40)
+
+
+# DATA UJI / DRY-RUN
+def pengujian():
+    print("\n=== PENGUJIAN ALGORITMA ===")
+
+    data_uji = [
+        (10000, 3, 2000),
+        (25000, 2, 5000)
+    ]
+
+    for nomor, (harga, jumlah, biaya) in enumerate(data_uji, start=1):
+        subtotal, total = total_pembayaran(harga, jumlah, biaya)
+
+        print(f"\nData uji {nomor}")
+        print(f"Harga satuan    : Rp{harga:,.0f}")
+        print(f"Jumlah barang   : {jumlah}")
+        print(f"Biaya layanan   : Rp{biaya:,.0f}")
+        print(f"Subtotal        : Rp{subtotal:,.0f}")
+        print(f"Total pembayaran: Rp{total:,.0f}")
+
+
+if __name__ == "__main__":
+    main()
+    pengujian()
